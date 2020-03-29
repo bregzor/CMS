@@ -12,12 +12,10 @@ header {
 }
 
 .page-header {
-    // @include base-flex(column, center, black);
     display: flex;
     justify-content: center;
     align-items: center;
     flex-direction: column;
-    // width: 100vw;
     padding: 20px;
     position: relative;
     z-index: 10;
