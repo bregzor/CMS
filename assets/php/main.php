@@ -1,22 +1,13 @@
 <?php
-include($root . 'drawposts.php');
+include($root . 'global.php');
 $path = $_SERVER['REQUEST_URI'];
 
 if (strpos($path, 'admin') !== false) {
-    $mainOutput = 
-    "<section class='posts-wrapper'>
-                <div class='posts'>
-                     " . drawPosts("admin")  . "</div>
-            </section>
-    ";
-    
+    $mainOutput = drawPosts("admin");
+      
 } else {
-    $mainOutput = 
-    "<section class='posts-wrapper'>
-                <div class='posts'>
-                     " . drawPosts("front")  . "</div>
-            </section>
-    ";
-}
+    $mainOutput = drawPosts("front");
+  }
+
 echo $mainOutput . "</main>";
 ?>

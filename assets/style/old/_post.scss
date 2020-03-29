@@ -1,0 +1,38 @@
+@mixin base-flex($pos, $direction) {
+    display: flex;
+    justify-content: $pos;
+    flex-direction: $direction;
+}
+
+
+.posts-wrapper {
+    @include base-flex(center, column);
+}
+
+.posts {
+    @include base-flex(center, column);
+    align-content: flex-start;
+    background:green;
+    max-width: 800px;
+    align-self:center;
+    
+    &__item {
+
+        &-logo {}
+        &-img {
+            width: 100%;
+            img {
+                width: 50%;
+            }
+        }
+        h2 {
+        }
+        p {
+
+        }
+    }
+}
+
+.admin-form {
+    @include base-flex(center, column);
+}

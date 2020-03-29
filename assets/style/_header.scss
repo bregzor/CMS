@@ -1,19 +1,36 @@
+header {
+    display: grid;
+    height: 40vh;
+    grid-template: auto 1fr / 1fr;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+
+    h1 {
+        font-family: 'Poppins', sans-serif;
+    }
+}
+
 .page-header {
-   // @include base-flex(column, center, black);
-   display: flex;
-   justify-content: center;
-   flex-direction: column;
-   // width: 100vw;
+    // @include base-flex(column, center, black);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    // width: 100vw;
     padding: 20px;
     position: relative;
     z-index: 10;
+    background: rgba(202, 203, 189, 0.938);
+    font-family: 'Poppins', sans-serif;
+
 
     @media (min-width:768px) {
         flex-direction: row;
         justify-content: space-between;
     }
 
-    &__logo{
+    &__logo {
         padding-bottom: 10px;
     }
 
@@ -27,22 +44,25 @@
         width: min-content;
         list-style-type: none;
         justify-content: space-evenly;
-        
+
         @media (min-width:760px) {
             min-width: 500px;
         }
 
         li {
             display: inline;
-            padding-bottom: 5px;
-            border-bottom:3px solid transparent;
-            &:hover{
-                border-bottom:3px solid gray;
+            padding-bottom: 2px;
+            border-bottom: 3px solid transparent;
+
+            &:hover {
+                border-bottom: 3px solid gray;
             }
+
             a {
                 color: white;
-                font-weight: 500;
+                font-weight: 100;
                 text-decoration: none;
+                font-weight: bold;
             }
         }
     }

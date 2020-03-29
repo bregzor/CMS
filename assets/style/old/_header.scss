@@ -1,0 +1,49 @@
+.page-header {
+   // @include base-flex(column, center, black);
+   display: flex;
+   justify-content: center;
+   flex-direction: column;
+   // width: 100vw;
+    padding: 20px;
+    position: relative;
+    z-index: 10;
+
+    @media (min-width:768px) {
+        flex-direction: row;
+        justify-content: space-between;
+    }
+
+    &__logo{
+        padding-bottom: 10px;
+    }
+
+    h1 {
+        justify-content: center;
+    }
+
+    ul {
+        display: flex;
+        min-width: 300px;
+        width: min-content;
+        list-style-type: none;
+        justify-content: space-evenly;
+        
+        @media (min-width:760px) {
+            min-width: 500px;
+        }
+
+        li {
+            display: inline;
+            padding-bottom: 5px;
+            border-bottom:3px solid transparent;
+            &:hover{
+                border-bottom:3px solid gray;
+            }
+            a {
+                color: white;
+                font-weight: 500;
+                text-decoration: none;
+            }
+        }
+    }
+}

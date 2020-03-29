@@ -1,4 +1,13 @@
-@import url("https://fonts.googleapis.com/css?family=Montserrat:400,500,700,800&display=swap");
+@import url("https://fonts.googleapis.com/css?family=Playfair+Display|Poppins:400,500,700,900&display=swap");
+.posts, .admin-form {
+  background: rgba(255, 255, 255, 0.767);
+  width: 100%;
+  max-width: 800px;
+  padding: 2em;
+  margin: 1em auto;
+  border-radius: 25px;
+}
+
 * {
   margin: 0;
   padding: 0;
@@ -7,14 +16,37 @@
 }
 
 body {
-  background: url("/CMS/assets/media/bg.jpg");
+  background: url("../media/bgimage.jpg");
   background-size: cover;
   background-repeat: no-repeat;
 }
 
-h1, h2, h3, p {
+h1,
+h2,
+h3,
+p {
   color: white;
-  font-family: 'Monteserrat', sans-serif;
+  font-family: 'Montserrat', sans-serif;
+}
+
+header {
+  display: -ms-grid;
+  display: grid;
+  height: 40vh;
+  -ms-grid-rows: auto 1fr;
+  -ms-grid-columns: 1fr;
+      grid-template: auto 1fr / 1fr;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  text-align: center;
+}
+
+header h1 {
+  font-family: 'Poppins', sans-serif;
 }
 
 .page-header {
@@ -24,6 +56,9 @@ h1, h2, h3, p {
   -webkit-box-pack: center;
       -ms-flex-pack: center;
           justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
   -webkit-box-orient: vertical;
   -webkit-box-direction: normal;
       -ms-flex-direction: column;
@@ -31,6 +66,8 @@ h1, h2, h3, p {
   padding: 20px;
   position: relative;
   z-index: 10;
+  background: rgba(202, 203, 189, 0.938);
+  font-family: 'Poppins', sans-serif;
 }
 
 @media (min-width: 768px) {
@@ -77,7 +114,7 @@ h1, h2, h3, p {
 
 .page-header ul li {
   display: inline;
-  padding-bottom: 5px;
+  padding-bottom: 2px;
   border-bottom: 3px solid transparent;
 }
 
@@ -87,8 +124,9 @@ h1, h2, h3, p {
 
 .page-header ul li a {
   color: white;
-  font-weight: 500;
+  font-weight: 100;
   text-decoration: none;
+  font-weight: bold;
 }
 
 .posts-wrapper {
@@ -117,8 +155,28 @@ h1, h2, h3, p {
           flex-direction: column;
   -ms-flex-line-pack: start;
       align-content: flex-start;
-  background: green;
-  min-width: 600px;
+}
+
+.posts__item-img {
+  width: 100%;
+}
+
+.posts__item h2 {
+  font-family: 'F',sans-serif;
+}
+
+.posts__item h2, .posts__item p {
+  padding: 10px;
+  color: black;
+}
+
+.posts__item p {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.posts__item-date {
+  padding: 0.5em;
+  text-align: right;
 }
 
 .admin-form {
@@ -132,13 +190,89 @@ h1, h2, h3, p {
   -webkit-box-direction: normal;
       -ms-flex-direction: column;
           flex-direction: column;
+  position: relative;
+}
+
+.admin-form label, .admin-form input, .admin-form textarea {
+  width: 100%;
+}
+
+.admin-form__change-section {
+  position: absolute;
+  top: 0;
+  right: -3em;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  height: 70px;
+}
+
+.admin-form .fa-edit::before,
+.admin-form .fa-trash-alt::before {
+  font-size: 20px;
+  color: #cf9c2e;
+  cursor: pointer;
+}
+
+.admin-form .fa-edit::before {
+  margin-left: 0.2em;
+}
+
+.admin-form .fa-edit:hover,
+.admin-form .fa-trash-alt:hover {
+  -webkit-transition: ease-in all 250ms;
+  transition: ease-in all 250ms;
+  -webkit-transform: scale(1.2);
+          transform: scale(1.2);
+  color: #cf9c2e;
+}
+
+.adminPostsWrapper i {
+  color: white;
+  font-size: 30px;
+  margin: auto;
+}
+
+.adminPostsWrapper .iconPlusFrame {
+  border-radius: 50%;
+  border: 3px solid white;
+  height: 60px;
+  width: 60px;
+  position: absolute;
+  top: 100px;
+  right: 2em;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  justify-self: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  cursor: pointer;
+}
+
+.adminPostsWrapper .iconPlusFrame:hover {
+  -webkit-transition: ease-in all 250ms;
+  transition: ease-in all 250ms;
+  -webkit-transform: scale(1.2);
+          transform: scale(1.2);
 }
 
 footer {
-  height: 50px;
+  padding: 0.5em;
   width: 100%;
-  background: white;
+  background: rgba(202, 203, 189, 0.89);
   position: fixed;
   bottom: 0;
+  text-align: center;
+  font-size: 12px;
+  font-family: 'Playfair Display', serif;
 }
 /*# sourceMappingURL=main.css.map */
