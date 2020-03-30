@@ -21,20 +21,21 @@ if (isset($_POST["headline"])) {
   $stmt->bindParam(':isPublished', $isPublished);
   $stmt->bindParam(':embed', $embed);
   $stmt->bindParam(':date', $date);
-  // uploadImage();
+
   if ($stmt->execute()) {
-?>
-    <script>
-      alert('New file uploaded');
-    </script>
-  <?php
-  } else {
-  ?>
-    <script>
-      alert('Error');
-    </script>
-<?php
-  }
+    ?>
+        <script>
+          alert('New file uploaded');
+        </script>
+      <?php
+      } else {
+      ?>
+        <script>
+          alert('Error');
+        </script>
+    <?php
+      }
+
   header('Location:../../admin.php');
 }
 

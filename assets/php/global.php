@@ -31,8 +31,8 @@ function paragraphPerRowbreak($row) {
 //Gets correct admin and user elements (front,admin)
 function getPostType($row = "", $mode) {
 	$output = "";
-	$postForm = "<form id='addPost' data-id='".  $row["ID"] . "' class='admin-form' action='assets/php/addposts.php'  method='POST' enctype='multipart/form-data'  style='display:none;'>
-		<input type='file' name='' id=''>
+	$postForm = "<form id='addPost' data-id='".  $row["ID"] . "' class='admin-form' action='assets/php/addposts.php'  method='POST' style='display:none;' enctype='multipart/form-data'>
+		<input type='file' name='image' id='image'>
 		<label for='headline'><span>Headline</span><br><input name='headline' type='text'></label><br>
 		<label for='text'><span>Text</span><br>
 		<textarea name='textarea' id='' cols='30' rows='10'></textarea></label>
