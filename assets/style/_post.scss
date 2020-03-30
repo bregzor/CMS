@@ -15,6 +15,7 @@
     @extend %post-style;
 
     &__item {
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
         &-logo {}
         &-img {
             width: 100%;
@@ -29,17 +30,60 @@
         &-date {
             padding:0.5em;
             text-align: right;
+            color: rgb(105, 105, 105);
         }
     }
+}
+
+.grow-post {
+    opacity: 1;
+    transition: opacity 250 ease-in;
 }
 
 .admin-form {
     @include base-flex(center, column);
     @extend %post-style;
     position: relative;
-
+    
+    
     label, input, textarea {
         width: 100%;
+        margin-bottom: 10px;
+        span {
+            padding:5px;
+            font-family: 'Poppins',sans-serif;
+            font-weight: bold;
+            font-size: 22px;
+            color: coral;
+        }
+    }
+    input, textarea {
+        border-radius: 10px;
+        border: 1px solid rgb(209, 209, 209);
+        padding:10px;
+        margin-top: 10px;
+        outline: none;
+    }
+
+    button {
+        background:#6d6255;
+        cursor: pointer;
+        border-radius: 10px;
+        border: none;
+        height:50px;
+        color: white;
+        transition: background 250ms;
+        &:hover {
+            transition: all 250ms;
+            background:#4d443b;
+        }
+    }
+  
+    &-published {
+        width: 200px !important;
+        display: inherit;
+        flex-direction: row;
+        align-self: flex-end;
     }
 
     &__change-section {
@@ -48,6 +92,7 @@
         right: -3em;
         @include base-flex(center, column);
         height: 70px;
+        
     }
 
     .fa-edit::before,

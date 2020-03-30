@@ -157,6 +157,10 @@ header h1 {
       align-content: flex-start;
 }
 
+.posts__item {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
 .posts__item-img {
   width: 100%;
 }
@@ -177,6 +181,13 @@ header h1 {
 .posts__item-date {
   padding: 0.5em;
   text-align: right;
+  color: dimgray;
+}
+
+.grow-post {
+  opacity: 1;
+  -webkit-transition: opacity 250 ease-in;
+  transition: opacity 250 ease-in;
 }
 
 .admin-form {
@@ -195,6 +206,51 @@ header h1 {
 
 .admin-form label, .admin-form input, .admin-form textarea {
   width: 100%;
+  margin-bottom: 10px;
+}
+
+.admin-form label span, .admin-form input span, .admin-form textarea span {
+  padding: 5px;
+  font-family: 'Poppins',sans-serif;
+  font-weight: bold;
+  font-size: 22px;
+  color: coral;
+}
+
+.admin-form input, .admin-form textarea {
+  border-radius: 10px;
+  border: 1px solid #d1d1d1;
+  padding: 10px;
+  margin-top: 10px;
+  outline: none;
+}
+
+.admin-form button {
+  background: #6d6255;
+  cursor: pointer;
+  border-radius: 10px;
+  border: none;
+  height: 50px;
+  color: white;
+  -webkit-transition: background 250ms;
+  transition: background 250ms;
+}
+
+.admin-form button:hover {
+  -webkit-transition: all 250ms;
+  transition: all 250ms;
+  background: #4d443b;
+}
+
+.admin-form-published {
+  width: 200px !important;
+  display: inherit;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -ms-flex-item-align: end;
+      align-self: flex-end;
 }
 
 .admin-form__change-section {

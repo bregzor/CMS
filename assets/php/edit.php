@@ -1,15 +1,14 @@
 <?php 
 
 require_once 'db.php';
-require 'clean.php';
 
-$headline  = Clean($_POST["headline"]);
-$text  = Clean($_POST["textarea"]);
-$isPublished = Clean($_POST{"publ"});
-$embed  = Clean($_POST["embed"]);
+$headline  = htmlspecialchars($_POST["headline"]);
+$text  = htmlspecialchars($_POST["textarea"]);
+$isPublished = htmlspecialchars($_POST{"publ"});
+$embed  = htmlspecialchars($_POST["embed"]);
 $image = "path";
 $date = date("F d, Y h:i:s");
-$id = Clean($_POST["id"]);
+$id = htmlspecialchars($_POST["id"]);
 
 $update = "UPDATE posts 
     SET 

@@ -6,7 +6,7 @@ $id = $_GET['id'];
 
 if (!empty($id))
 {       
-        $id = Clean($id);
+        $id = htmlspecialchars($id);
         $query = "DELETE FROM posts WHERE ID = :id";
         $stmt = $db->prepare($query);
         $stmt->bindParam(':id' , $id);
