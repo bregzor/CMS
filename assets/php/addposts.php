@@ -21,21 +21,8 @@ if (isset($_POST["headline"])) {
   $stmt->bindParam(':isPublished', $isPublished);
   $stmt->bindParam(':embed', $embed);
   $stmt->bindParam(':date', $date);
-
-  if ($stmt->execute()) {
-    ?>
-        <script>
-          alert('New file uploaded');
-        </script>
-      <?php
-      } else {
-      ?>
-        <script>
-          alert('Error');
-        </script>
-    <?php
-      }
-
+  $stmt->execute();
+  
   header('Location:../../admin.php');
 }
 

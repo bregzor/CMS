@@ -1,12 +1,14 @@
 <?php 
 
 require_once 'db.php';
+include 'imageupload.php';
+
 
 $headline  = htmlspecialchars($_POST["headline"]);
 $text  = htmlspecialchars($_POST["textarea"]);
 $isPublished = htmlspecialchars($_POST{"publ"});
 $embed  = htmlspecialchars($_POST["embed"]);
-$image = "path";
+$image = htmlspecialchars($_POST["path"]);
 $date = date("F d, Y h:i:s");
 $id = htmlspecialchars($_POST["id"]);
 

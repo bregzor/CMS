@@ -1,9 +1,7 @@
 <?php
 require_once 'db.php';
-include "clean.php";
 
-$id = $_GET['id'];
-
+$id = $_POST['ID'];
 if (!empty($id))
 {       
         $id = htmlspecialchars($id);
@@ -12,7 +10,4 @@ if (!empty($id))
         $stmt->bindParam(':id' , $id);
         $stmt->execute();
     }
-
-header("Location: ../../admin.php");
-
 ?>

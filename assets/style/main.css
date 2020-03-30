@@ -190,6 +190,16 @@ header h1 {
   transition: opacity 250 ease-in;
 }
 
+.close-btn {
+  width: 25px;
+  height: 25px !important;
+  border-radius: 15px;
+  position: absolute;
+  top: -5px;
+  right: -10px;
+  background: #cf9c2e !important;
+}
+
 .admin-form {
   display: -webkit-box;
   display: -ms-flexbox;
@@ -319,6 +329,35 @@ header h1 {
   transition: ease-in all 250ms;
   -webkit-transform: scale(1.2);
           transform: scale(1.2);
+}
+
+.fadeOut {
+  -webkit-animation: fade 250ms ease-out;
+          animation: fade 250ms ease-out;
+  opacity: 0;
+}
+
+.fadeIn {
+  -webkit-transition: all ease-in 250ms;
+  transition: all ease-in 250ms;
+}
+
+@-webkit-keyframes fade {
+  0% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+  }
+}
+
+@keyframes fade {
+  0% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+  }
 }
 
 footer {
