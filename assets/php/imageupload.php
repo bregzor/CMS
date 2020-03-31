@@ -2,7 +2,7 @@
 
 function uploadImage(){
   require 'db.php';
-  if(isset($_POST['savePost'])){
+ // if(isset($_POST['savePost'])){
 
     // Get images
     $images = $_FILES['image']['name'];
@@ -22,5 +22,5 @@ function uploadImage(){
     // To bind and execute
     return $imageName;
 
-  }
+  //}
 }

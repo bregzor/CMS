@@ -35,6 +35,12 @@
     }
 }
 
+.norows-message {
+    width: 100%;
+    text-align: center;
+    color:rgb(65, 65, 65);
+}
+
 .grow-post {
     opacity: 1;
     transition: opacity 250 ease-in;
@@ -43,7 +49,7 @@
 .close-btn {
     width: 25px;
     height:25px !important;
-    border-radius: 15px;
+    border-radius: 50px;
     position: absolute;
     top:-5px;
     right:-10px;
@@ -54,6 +60,7 @@
     @include base-flex(center, column);
     @extend %post-style;
     position: relative;
+    opacity: 1;
     
     
     label, input, textarea {
@@ -72,7 +79,7 @@
         border: 1px solid rgb(209, 209, 209);
         padding:10px;
         margin-top: 10px;
-        outline: none;
+        outline: none;  
     }
 
     button {
@@ -144,11 +151,12 @@
         justify-self: center;
         align-items: center;
         cursor: pointer;
+
     }
 
     .iconPlusFrame:hover {
-        transition: ease-in all 250ms;
-        transform: scale(1.2);
+        transition: ease-in   250ms;
+        transform: scale(1.2);  
     }
 }
 
@@ -158,10 +166,11 @@
 }
 
 .fadeIn {
-    transition: all ease-in 250ms;
+    animation: fade 250ms ease-in reverse;
+    opacity: 1;
 }
 
-@keyframes fade {
+@keyframes  fade {
     0% {
         opacity: 1;
     }

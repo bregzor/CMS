@@ -19,6 +19,7 @@ function isPublished($row) {
 }
 
 //Gets correct admin and user elements (front,admin)
+//$row is asso array from DB
 function getPostType($row = "", $mode) {
 	$output = "";
 	$postForm = "
@@ -26,7 +27,7 @@ function getPostType($row = "", $mode) {
 			<label for='image'><span>Choose image</span><input type='file' name='image' id='image'></label>
 			<label for='headline'><span>Headline</span><br><input name='headline' type='text'></label><br>
 			<label for='text'><span>Text</span><br>
-				<textarea name='textarea' id='' cols='30' rows='10'></textarea></label>
+				<textarea name='textarea' id='' cols='30' rows='5'></textarea></label>
 			<label for='embed'><span>Add youtube url / map</span><br>
 				<textarea name='embed' id='' cols='30' rows='5'></textarea></label>
 			<br>
@@ -37,15 +38,16 @@ function getPostType($row = "", $mode) {
 		</form>";
 
 		$editPostForm = "
-		<form id='addPost' data-id='".  $row["ID"] . "' class='admin-form' action='assets/php/addposts.php' style='display:none;' enctype='multipart/form-data'>
-		<img class='posts__item-img' src='/CMS/assets/media/" . $row["image"] . "' alt=''>
-			<label for='image'><span>Choose new image(replaces old image)</span><input type='file' name='image' id='image'></label>
+		<form id='addPost' data-id='".  $row["ID"] . "' class='admin-form' action='assets/php/edit.php' method='POST' style='display:none;' enctype='multipart/form-data'>
+			<img class='posts__item-img' src='/CMS/assets/media/" . $row["image"] . "' alt=''>
+			<label for='image'><span>Choose new image(replaces old image)</span>
+			<input type='file' name='image' id='image'></label>
 			<label for='headline'>
 				<span>Headline</span><br>
 				<input name='headline' type='text' value='".$row["headline"]."'>'
 			</label><br>
 			<label for='text'><span>Text</span><br>
-				<textarea name='textarea' id='' cols='30' rows='10' value=''>" . $row["textarea"] . "</textarea>
+				<textarea name='textarea' id='' cols='30' rows='5' value=''>" . $row["textarea"] . "</textarea>
 			</label>
 			<label for='embed'><span>Add youtube url / map</span><br>
 				<textarea name='embed' id='' cols='30' rows='5'>" . $row["embed"] . "</textarea>¨
@@ -65,7 +67,7 @@ function getPostType($row = "", $mode) {
 				"<article class='posts posts__item'>
 					<img class='posts__item-img' src='/CMS/assets/media/" . $row["image"] . "' alt=''>
 					<h2>". $row["headline"] . "</h2>
-					". str_replace("\r\n", "<p>", $row["textarea"]) . "</p>
+					". str_replace(PHP_EOL, "<p>", $row["textarea"]) . "</p>
 					<div class='posts__item-embedarea'>" .  $row["embed"] . "</div>
 					<span class='posts__item-date'> ". $row["date"] . "</span>
 			</article>";	
@@ -84,8 +86,8 @@ function getPostType($row = "", $mode) {
 	}
 	return $output;
 }
-
 //Handles front and admin draw mode
+//Gets dbdata and calls postype above
 function drawPosts($mode) {
 
 	//Different sortorder for users
@@ -116,8 +118,8 @@ function drawPosts($mode) {
 			echo "</div></section>";
 		
 		} else {
-			echo "NO POSTS CREATED!";
-		}
+			echo  "<h3 class='norows-message'>NO POSTS CREATED!</h3>";
+			}
 	}
 }
 ?>

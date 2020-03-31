@@ -1,4 +1,15 @@
+"use strict"
+
 //Shows main form container
+const closeButton = (element) => {
+	let closeBtn = document.createElement("button");
+	closeBtn.innerText = "X";
+	closeBtn.classList.add("close-btn");
+	closeBtn.classList.add("fadeIn");
+	element.append(closeBtn);
+	return closeBtn;
+}
+
 const drawBlogForm = () => {
 	const form = document.querySelector("#addPost");
 	if (form.style.display == "none") {
@@ -15,23 +26,23 @@ const editView = (id) => {
 	let closeBtn = document.createElement("button");
 	closeBtn.innerText = "X";
 	closeBtn.classList.add("close-btn");
-
+	closeBtn.classList.add("fadeIn");
 	//Shows clicked form
 	const editForm = document.querySelector(`[data-id='${id}']`)
 	if (editForm.style.display === "none") {
 		editForm.style.display = "flex";
 		editForm.append(closeBtn);
 		editForm.previousElementSibling.style.display = "none";
-		
 		//Adding possibility to exit edit mode
-		closeBtn.addEventListener("click", () =>{
+		closeBtn.addEventListener("click", () => {
 			event.preventDefault();
 			editForm.style.display = "none";
-			editForm.previousElementSibling.style.display = "flex";	
+			editForm.previousElementSibling.style.display = "flex";
 		})
 
 	} else {
 		editForm.style.display = "none";
+		editForm.previousElementSibling.classList.add("fadeIn");
 		editForm.previousElementSibling.style.display = "flex";
 	}
 
@@ -57,18 +68,20 @@ const deleteView = (id) => {
 			body: formData
 		})
 		.then(response => {
-			if(response.ok) {
+			if (response.ok) {
 				formElement.previousElementSibling.classList.toggle("fadeOut");
 				formElement.classList.toggle("fadeOut");
-				setTimeout( () => 
-				{ formElement.previousElementSibling.remove(); formElement.remove(); }
-				, 250);
+				setTimeout(() => {
+					formElement.previousElementSibling.remove();
+					formElement.remove();
+				}, 250);
 			}
 		});
 }
 
 //Updates DOM text
 const updateText = (data = "", element) => {
+	//Finds correct element and sets formdata value..
 	for (let i = 0; i < element.children.length; i++) {
 		const row = element.children[i];
 		switch (row.tagName) {
@@ -78,7 +91,7 @@ const updateText = (data = "", element) => {
 
 			case "P":
 				row.innerText = data.get('textarea');
-			break;
+				break;
 
 			case "IMAGE":
 				row.src = data.get('image');
@@ -90,25 +103,37 @@ const updateText = (data = "", element) => {
 
 //Sending updated formdata to backend
 const sendEditedFormdata = (id) => {
-	
+
 	const formElement = document.querySelector(`[data-id='${id}']`);
 	let formData = new FormData(formElement);
 	let imagePath = formElement.firstElementChild.getAttribute("src");
+
 	formData.append('id', id);
 	imagePath = imagePath.replace("/CMS/assets/media/", "");
-	formData.append("path", imagePath)
+	formData.append("path", imagePath);
+
+	//For handling files in the future
+	formData.append("file", file);
+
+	console.log(formData.get("path") + formData.get("file")); 
 	event.preventDefault();
-	fetch("./assets/php/edit.php", {
-			method: 'POST',
-			body: formData
-		})
-		.then(response => {
-			return response.status;
-		})
-		.then(body => {
-			editView(id);
-			updateText(formData, formElement.previousElementSibling)
-		});
+	//If file is selected use default action instead for fetch..
+	const file = formElement.children[1].children[1].files[0];
+
+	if (!file) {
+		event.preventDefault();
+		fetch("./assets/php/edit.php", {
+				method: 'POST',
+				body: formData
+			})
+			.then(response => {
+				return response.status;
+			})
+			.then(body => {
+				editView(id);
+				updateText(formData, formElement.previousElementSibling)
+			});
+	} 
 }
 
 

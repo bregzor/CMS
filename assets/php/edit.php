@@ -3,16 +3,27 @@
 require_once 'db.php';
 include 'imageupload.php';
 
-
 $headline  = htmlspecialchars($_POST["headline"]);
 $text  = htmlspecialchars($_POST["textarea"]);
 $isPublished = htmlspecialchars($_POST{"publ"});
 $embed  = htmlspecialchars($_POST["embed"]);
-$image = htmlspecialchars($_POST["path"]);
+$image = "";
 $date = date("F d, Y h:i:s");
-$id = htmlspecialchars($_POST["id"]);
+$id = htmlspecialchars($_POST["ID"]);
+$file = htmlspecialchars($_POST["file"]);
 
-$update = "UPDATE posts 
+//Using fetch when only updating text, when uploading file should return as a regular POST
+$useFetch = false;
+// if(!empty($file)) {
+//     $image =  htmlspecialchars($_POST["path"]);
+// } else {
+//     $image = uploadImage();
+//     $useFetch = false;
+// }
+
+if(isset($_POST["headline"])) {
+
+    $update = "UPDATE posts 
     SET 
 	    headline = :headline,
         textarea = :textarea,
@@ -32,5 +43,12 @@ $stmt->bindParam(':embed'  , $embed);
 $stmt->bindParam(':date'  , $date);
 $stmt->bindParam(':id' , $id);
 $stmt->execute();
-echo "row updated!";
+header('Location:../../admin.php');
+
+
+}
+
+if(!$useFetch) {
+   header('Location:../../admin.php');
+}
 ?>

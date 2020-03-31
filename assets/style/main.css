@@ -19,6 +19,7 @@ body {
   background: url("../media/bgimage.jpg");
   background-size: cover;
   background-repeat: no-repeat;
+  min-height: 1000px;
 }
 
 h1,
@@ -184,6 +185,12 @@ header h1 {
   color: dimgray;
 }
 
+.norows-message {
+  width: 100%;
+  text-align: center;
+  color: #414141;
+}
+
 .grow-post {
   opacity: 1;
   -webkit-transition: opacity 250 ease-in;
@@ -193,7 +200,7 @@ header h1 {
 .close-btn {
   width: 25px;
   height: 25px !important;
-  border-radius: 15px;
+  border-radius: 50px;
   position: absolute;
   top: -5px;
   right: -10px;
@@ -212,6 +219,7 @@ header h1 {
       -ms-flex-direction: column;
           flex-direction: column;
   position: relative;
+  opacity: 1;
 }
 
 .admin-form label, .admin-form input, .admin-form textarea {
@@ -325,8 +333,8 @@ header h1 {
 }
 
 .adminPostsWrapper .iconPlusFrame:hover {
-  -webkit-transition: ease-in all 250ms;
-  transition: ease-in all 250ms;
+  -webkit-transition: ease-in   250ms;
+  transition: ease-in   250ms;
   -webkit-transform: scale(1.2);
           transform: scale(1.2);
 }
@@ -338,8 +346,8 @@ header h1 {
 }
 
 .fadeIn {
-  -webkit-transition: all ease-in 250ms;
-  transition: all ease-in 250ms;
+  animation: fade 250ms ease-in reverse;
+  opacity: 1;
 }
 
 @-webkit-keyframes fade {

@@ -2,12 +2,13 @@
 
 require_once 'db.php';
 include 'imageupload.php';
+include 'embed.php';
 
 if (isset($_POST["headline"])) {
   $headline  = htmlspecialchars($_POST["headline"]);
   $text  = htmlspecialchars($_POST["textarea"]);
   $isPublished = htmlspecialchars($_POST["publ"]);
-  $embed  = htmlspecialchars($_POST["embed"]);
+  $embed  = embed();
   $image = uploadImage();
   $date = date("F d Y h:i:s");
 
