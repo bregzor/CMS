@@ -15,22 +15,42 @@
     @extend %post-style;
 
     &__item {
-        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        font-family: 'Poppins', sans-serif;
+        box-shadow: 1px 1px 3px rgb(212, 212, 212);
+
         &-logo {}
+
         &-img {
             width: 100%;
+            border-radius: 25px;
         }
+
         h2 {
-            font-family: 'F',sans-serif;
+            font-family: 'Poppins', sans-serif;
+            text-align: center;
+            color: rgb(37, 156, 165);
+            padding-top: 1em;
+            font-size: 36px;
         }
-        h2,p {padding:10px; color:black}
+
         p {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            font-family: 'Playfair Display', sans-serif;
+            color: rgb(69, 100, 100);
+            text-align: center !important;
         }
+
         &-date {
-            padding:0.5em;
-            text-align: right;
-            color: rgb(105, 105, 105);
+            padding-bottom: 1em;
+            text-align: center;
+            color: black;
+            opacity: 0.3;
+            font-size: 14px;
+        }
+
+        &-embedarea {
+            padding: 2em 0 2em 0;
+            display: flex;
+            justify-content: center;
         }
     }
 }
@@ -38,7 +58,7 @@
 .norows-message {
     width: 100%;
     text-align: center;
-    color:rgb(65, 65, 65);
+    color: rgb(65, 65, 65);
 }
 
 .grow-post {
@@ -48,12 +68,12 @@
 
 .close-btn {
     width: 25px;
-    height:25px !important;
+    height: 25px !important;
     border-radius: 50px;
     position: absolute;
-    top:-5px;
-    right:-10px;
-    background:rgb(207, 156, 46) !important;
+    top: -5px;
+    right: -10px;
+    background: rgb(207, 156, 46) !important;
 }
 
 .admin-form {
@@ -61,41 +81,51 @@
     @extend %post-style;
     position: relative;
     opacity: 1;
-    
-    
-    label, input, textarea {
+
+
+    label,
+    input,
+    textarea {
         width: 100%;
         margin-bottom: 10px;
+
         span {
-            padding:5px;
-            font-family: 'Poppins',sans-serif;
+            padding: 5px;
+            font-family: 'Poppins', sans-serif;
             font-weight: bold;
             font-size: 22px;
             color: coral;
         }
     }
-    input, textarea {
+
+    input,
+    textarea {
         border-radius: 10px;
         border: 1px solid rgb(209, 209, 209);
-        padding:10px;
+        padding: 10px;
         margin-top: 10px;
-        outline: none;  
+        outline: none;
     }
 
     button {
-        background:#6d6255;
+        background: #6d6255;
         cursor: pointer;
-        border-radius: 10px;
+        border-radius: 50%;
         border: none;
-        height:50px;
+        height: 50px;
         color: white;
         transition: background 250ms;
+
         &:hover {
             transition: all 250ms;
-            background:#4d443b;
+            background: #4d443b;
         }
     }
-  
+
+    .submitBtn {
+        border-radius: 15px;
+    }
+
     &-published {
         width: 200px !important;
         display: inherit;
@@ -109,25 +139,23 @@
         right: -3em;
         @include base-flex(center, column);
         height: 70px;
-        
-    }
 
+    }
     .fa-edit::before,
     .fa-trash-alt::before {
         font-size: 20px;
-        color: rgb(207, 156, 46);
+        // color: rgb(207, 156, 46);
+        color: rgb(37, 156, 165);
         cursor: pointer;
-    }
-
-    .fa-edit::before {
-        margin-left: 0.2em;
+        text-shadow: 1px 1px 2px white;
     }
 
     .fa-edit:hover,
     .fa-trash-alt:hover {
         transition: ease-in all 250ms;
         transform: scale(1.2);
-        color: rgb(207, 156, 46);
+        // color: rgb(207, 156, 46);
+        color: rgb(37, 156, 165);
     }
 }
 
@@ -141,27 +169,29 @@
 
     .iconPlusFrame {
         border-radius: 50%;
-        border: 3px solid rgb(255, 255, 255);
+        border: 3px solid rgb(37, 156, 165);
         height: 60px;
         width: 60px;
-        position: absolute;
+        position: fixed;
         top: 100px;
         right: 2em;
         display: flex;
         justify-self: center;
         align-items: center;
         cursor: pointer;
-
+        z-index: 10;
+        box-shadow: 1px 1px 2px gray;
+        background: rgba(216, 216, 213, 0.712);
     }
 
     .iconPlusFrame:hover {
-        transition: ease-in   250ms;
-        transform: scale(1.2);  
+        transition: ease-in 250ms;
+        transform: scale(1.2);
     }
 }
 
 .fadeOut {
-    animation:fade 250ms ease-out;
+    animation: fade 250ms ease-out;
     opacity: 0;
 }
 
@@ -170,11 +200,17 @@
     opacity: 1;
 }
 
-@keyframes  fade {
+@keyframes fade {
     0% {
         opacity: 1;
     }
+
     100% {
         opacity: 0;
     }
+}
+
+iframe {
+    width: 560px;
+    height: 315px;
 }

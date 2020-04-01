@@ -8,7 +8,7 @@ body {
     background: url('../media/bgimage.jpg');
     background-size: cover;
     background-repeat: no-repeat;
-    min-height: 1000px;
+    min-height: 1500px;
 }
 
 h1,
@@ -16,5 +16,9 @@ h2,
 h3,
 p {
     color: white;
-    font-family: 'Montserrat', sans-serif;
-}   
+    font-family: 'Poppins', sans-serif;
+}
+
+main {
+    padding-bottom: 4em;
+}

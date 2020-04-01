@@ -4,6 +4,10 @@ function uploadImage(){
   require 'db.php';
  // if(isset($_POST['savePost'])){
 
+
+   if (!empty($_FILES['image']['name'])) {
+     // No file was selected for upload, your (re)action goes here
+    
     // Get images
     $images = $_FILES['image']['name'];
 
@@ -16,11 +20,16 @@ function uploadImage(){
     // Get image type and check if its valid
     $imgExt = strtolower(pathinfo($images,PATHINFO_EXTENSION));
     
+    
     $imageName = rand(1000, 1000000).".". $imgExt;
+    
+
+    // $imageName = rand(1000, 1000000).".". $imgExt;
     move_uploaded_file($tmp_dir, $media_dir.$imageName);
 
     // To bind and execute
     return $imageName;
+  }
 
   //}
 }

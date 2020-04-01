@@ -7,21 +7,17 @@ $headline  = htmlspecialchars($_POST["headline"]);
 $text  = htmlspecialchars($_POST["textarea"]);
 $isPublished = htmlspecialchars($_POST{"publ"});
 $embed  = htmlspecialchars($_POST["embed"]);
-$image = "";
+$image = htmlspecialchars($_POST["path"]);
 $date = date("F d, Y h:i:s");
-$id = htmlspecialchars($_POST["ID"]);
-$file = htmlspecialchars($_POST["file"]);
+$id = htmlspecialchars($_POST["id"]);
+$file = $_POST["image"];
+$path = htmlspecialchars($_POST["path"]);
 
-//Using fetch when only updating text, when uploading file should return as a regular POST
-$useFetch = false;
-// if(!empty($file)) {
-//     $image =  htmlspecialchars($_POST["path"]);
-// } else {
-//     $image = uploadImage();
-//     $useFetch = false;
-// }
-
-if(isset($_POST["headline"])) {
+if (empty($_FILES['image']['name'])) {
+    $image =  htmlspecialchars($_POST["path"]); 
+} else{
+    $image = uploadImage();
+} 
 
     $update = "UPDATE posts 
     SET 
@@ -43,12 +39,7 @@ $stmt->bindParam(':embed'  , $embed);
 $stmt->bindParam(':date'  , $date);
 $stmt->bindParam(':id' , $id);
 $stmt->execute();
+
+
 header('Location:../../admin.php');
-
-
-}
-
-if(!$useFetch) {
-   header('Location:../../admin.php');
-}
-?>
+ //}

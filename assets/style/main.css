@@ -19,7 +19,7 @@ body {
   background: url("../media/bgimage.jpg");
   background-size: cover;
   background-repeat: no-repeat;
-  min-height: 1000px;
+  min-height: 1500px;
 }
 
 h1,
@@ -27,7 +27,11 @@ h2,
 h3,
 p {
   color: white;
-  font-family: 'Montserrat', sans-serif;
+  font-family: 'Poppins', sans-serif;
+}
+
+main {
+  padding-bottom: 4em;
 }
 
 header {
@@ -44,10 +48,15 @@ header {
       -ms-flex-align: center;
           align-items: center;
   text-align: center;
+  width: 100vw;
 }
 
 header h1 {
   font-family: 'Poppins', sans-serif;
+  margin-top: 3em;
+  font-size: 46px;
+  color: #259ca5;
+  text-shadow: 1px 1px 2px white;
 }
 
 .page-header {
@@ -64,11 +73,13 @@ header h1 {
   -webkit-box-direction: normal;
       -ms-flex-direction: column;
           flex-direction: column;
-  padding: 20px;
-  position: relative;
+  padding: 20px 20px 15px 20px;
+  position: fixed;
+  top: 0;
   z-index: 10;
   background: rgba(202, 203, 189, 0.938);
   font-family: 'Poppins', sans-serif;
+  width: 100%;
 }
 
 @media (min-width: 768px) {
@@ -84,7 +95,7 @@ header h1 {
 }
 
 .page-header__logo {
-  padding-bottom: 10px;
+  width: 80px;
 }
 
 .page-header h1 {
@@ -102,25 +113,22 @@ header h1 {
   width: -moz-min-content;
   width: min-content;
   list-style-type: none;
-  -webkit-box-pack: space-evenly;
-      -ms-flex-pack: space-evenly;
-          justify-content: space-evenly;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
 }
 
 @media (min-width: 760px) {
   .page-header ul {
     min-width: 500px;
+    -webkit-box-pack: end;
+        -ms-flex-pack: end;
+            justify-content: flex-end;
   }
 }
 
 .page-header ul li {
   display: inline;
-  padding-bottom: 2px;
-  border-bottom: 3px solid transparent;
-}
-
-.page-header ul li:hover {
-  border-bottom: 3px solid gray;
 }
 
 .page-header ul li a {
@@ -128,6 +136,11 @@ header h1 {
   font-weight: 100;
   text-decoration: none;
   font-weight: bold;
+  padding: 0 2em;
+}
+
+.page-header ul li a:hover {
+  color: #259ca5;
 }
 
 .posts-wrapper {
@@ -159,30 +172,46 @@ header h1 {
 }
 
 .posts__item {
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  font-family: 'Poppins', sans-serif;
+  -webkit-box-shadow: 1px 1px 3px #d4d4d4;
+          box-shadow: 1px 1px 3px #d4d4d4;
 }
 
 .posts__item-img {
   width: 100%;
+  border-radius: 25px;
 }
 
 .posts__item h2 {
-  font-family: 'F',sans-serif;
-}
-
-.posts__item h2, .posts__item p {
-  padding: 10px;
-  color: black;
+  font-family: 'Poppins', sans-serif;
+  text-align: center;
+  color: #259ca5;
+  padding-top: 1em;
+  font-size: 36px;
 }
 
 .posts__item p {
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  font-family: 'Playfair Display', sans-serif;
+  color: #456464;
+  text-align: center !important;
 }
 
 .posts__item-date {
-  padding: 0.5em;
-  text-align: right;
-  color: dimgray;
+  padding-bottom: 1em;
+  text-align: center;
+  color: black;
+  opacity: 0.3;
+  font-size: 14px;
+}
+
+.posts__item-embedarea {
+  padding: 2em 0 2em 0;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
 }
 
 .norows-message {
@@ -222,20 +251,25 @@ header h1 {
   opacity: 1;
 }
 
-.admin-form label, .admin-form input, .admin-form textarea {
+.admin-form label,
+.admin-form input,
+.admin-form textarea {
   width: 100%;
   margin-bottom: 10px;
 }
 
-.admin-form label span, .admin-form input span, .admin-form textarea span {
+.admin-form label span,
+.admin-form input span,
+.admin-form textarea span {
   padding: 5px;
-  font-family: 'Poppins',sans-serif;
+  font-family: 'Poppins', sans-serif;
   font-weight: bold;
   font-size: 22px;
   color: coral;
 }
 
-.admin-form input, .admin-form textarea {
+.admin-form input,
+.admin-form textarea {
   border-radius: 10px;
   border: 1px solid #d1d1d1;
   padding: 10px;
@@ -246,7 +280,7 @@ header h1 {
 .admin-form button {
   background: #6d6255;
   cursor: pointer;
-  border-radius: 10px;
+  border-radius: 50%;
   border: none;
   height: 50px;
   color: white;
@@ -258,6 +292,10 @@ header h1 {
   -webkit-transition: all 250ms;
   transition: all 250ms;
   background: #4d443b;
+}
+
+.admin-form .submitBtn {
+  border-radius: 15px;
 }
 
 .admin-form-published {
@@ -291,12 +329,9 @@ header h1 {
 .admin-form .fa-edit::before,
 .admin-form .fa-trash-alt::before {
   font-size: 20px;
-  color: #cf9c2e;
+  color: #259ca5;
   cursor: pointer;
-}
-
-.admin-form .fa-edit::before {
-  margin-left: 0.2em;
+  text-shadow: 1px 1px 2px white;
 }
 
 .admin-form .fa-edit:hover,
@@ -305,7 +340,7 @@ header h1 {
   transition: ease-in all 250ms;
   -webkit-transform: scale(1.2);
           transform: scale(1.2);
-  color: #cf9c2e;
+  color: #259ca5;
 }
 
 .adminPostsWrapper i {
@@ -316,10 +351,10 @@ header h1 {
 
 .adminPostsWrapper .iconPlusFrame {
   border-radius: 50%;
-  border: 3px solid white;
+  border: 3px solid #259ca5;
   height: 60px;
   width: 60px;
-  position: absolute;
+  position: fixed;
   top: 100px;
   right: 2em;
   display: -webkit-box;
@@ -330,11 +365,15 @@ header h1 {
       -ms-flex-align: center;
           align-items: center;
   cursor: pointer;
+  z-index: 10;
+  -webkit-box-shadow: 1px 1px 2px gray;
+          box-shadow: 1px 1px 2px gray;
+  background: rgba(216, 216, 213, 0.712);
 }
 
 .adminPostsWrapper .iconPlusFrame:hover {
-  -webkit-transition: ease-in   250ms;
-  transition: ease-in   250ms;
+  -webkit-transition: ease-in 250ms;
+  transition: ease-in 250ms;
   -webkit-transform: scale(1.2);
           transform: scale(1.2);
 }
@@ -366,6 +405,11 @@ header h1 {
   100% {
     opacity: 0;
   }
+}
+
+iframe {
+  width: 560px;
+  height: 315px;
 }
 
 footer {

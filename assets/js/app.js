@@ -36,8 +36,11 @@ const editView = (id) => {
 		//Adding possibility to exit edit mode
 		closeBtn.addEventListener("click", () => {
 			event.preventDefault();
-			editForm.style.display = "none";
-			editForm.previousElementSibling.style.display = "flex";
+			editForm.classList.toggle("fadeOut");
+			setTimeout(() => {
+				editForm.style.display = "none";
+				editForm.previousElementSibling.style.display = "flex";
+				}, 250);
 		})
 
 	} else {
@@ -103,37 +106,46 @@ const updateText = (data = "", element) => {
 
 //Sending updated formdata to backend
 const sendEditedFormdata = (id) => {
-
 	const formElement = document.querySelector(`[data-id='${id}']`);
+	const file = formElement.children[1].children[1].files[0];
+	event.preventDefault();
+
+	console.log(file);
+
+	
 	let formData = new FormData(formElement);
 	let imagePath = formElement.firstElementChild.getAttribute("src");
+	console.log(imagePath);
 
 	formData.append('id', id);
 	imagePath = imagePath.replace("/CMS/assets/media/", "");
 	formData.append("path", imagePath);
 
 	//For handling files in the future
-	formData.append("file", file);
-
-	console.log(formData.get("path") + formData.get("file")); 
-	event.preventDefault();
-	//If file is selected use default action instead for fetch..
-	const file = formElement.children[1].children[1].files[0];
-
-	if (!file) {
-		event.preventDefault();
-		fetch("./assets/php/edit.php", {
-				method: 'POST',
-				body: formData
-			})
-			.then(response => {
-				return response.status;
-			})
-			.then(body => {
-				editView(id);
-				updateText(formData, formElement.previousElementSibling)
-			});
+	//formData.append("file", file);
+	if (file.name.length === "UNDEFINED") {
+		console.log("yes");
 	} 
+
+
+	//If file is selected use default action instead for fetch..
+
+	if(file.name.length < 1) {
+		fetch("./assets/php/edit.php", {
+			method: 'POST',
+			body: formData
+		})
+		.then(response => {
+			return response.status;
+		})
+		.then(body => {
+			editView(id);
+			updateText(formData, formElement.previousElementSibling)
+		});
+
+	}
+	 
+
 }
 
 

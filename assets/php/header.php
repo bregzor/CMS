@@ -12,8 +12,11 @@
 <body>
   <header>
     <nav class="page-header">
-      <img class="page_header page_header__logo" src="" alt="">
+      
+    <a href="index.php"><img class="page_header page-header__logo" src="/CMS/assets/media/blogify.png"
+          alt="logo"></a>
       <ul>
+     <ul>
         <li>
           <!-- <a href="admin/admin.php">Admin</a> -->
           <a href="admin.php">Admin</a>
@@ -22,9 +25,9 @@
         <li>
           <a href="index.php">Blog</a>
         </li>
-        <li>
+        <!-- <li>
           <a href="#">About us</a>
-        </li>
+        </li> -->
       </ul>
     </nav>
 
