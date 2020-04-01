@@ -75,7 +75,7 @@ function getPostType($row = "", $mode) {
 					<img class='posts__item-img' src='/CMS/assets/media/" . $row["image"] . "' alt='" . $row["headline"] ."'>
 					<h2>". $row["headline"] . "</h2>
 					<span class='posts__item-date'><i class='far fa-calendar-alt'></i> ". $row["date"] . "</span>
-					". str_replace(PHP_EOL, "<p>", $row["textarea"]) . "</p>
+					<p>". nl2br($row["textarea"]) ."<br></p>
 					<div class='posts__item-embedarea'>" .  $row["embed"] . "</div>
 			</article>";	
 		} else {
@@ -85,7 +85,7 @@ function getPostType($row = "", $mode) {
 				<img class='posts__item-img' src='/CMS/assets/media/" . $row["image"] . "' alt=''>
 				<h2>". $row["headline"] . "</h2>
 				<span class='posts__item-date'><i class='far fa-calendar-alt'></i> ". $row["date"] . "</span>
-				". str_replace(PHP_EOL, "<p>", $row["textarea"]) . "</p>
+				<p>". nl2br($row["textarea"]) ."<br></p>
 				<div class='posts__item-embedarea'>".$row["embed"]."</div>
 			</article>
 			$editPostForm";	
